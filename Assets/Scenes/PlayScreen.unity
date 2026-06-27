@@ -17088,6 +17088,11 @@ Transform:
   - {fileID: 221663320}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &986584728 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8648331802030086684, guid: 8917d3f0f71b5e24d8e421114255a58d, type: 3}
+  m_PrefabInstance: {fileID: 1865910691327968268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1026268775 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9161927428779150623, guid: 8917d3f0f71b5e24d8e421114255a58d, type: 3}
@@ -17128,12 +17133,16 @@ MonoBehaviour:
   rb: {fileID: 1026268776}
   animator: {fileID: 1026268780}
   spriteRenderer: {fileID: 1026268778}
+  audioSource: {fileID: 1026268783}
   moveSpeed: 3.5
   jumpForce: 8
-  flameManager: {fileID: 1676618076}
   maxJump: 2
-  audioSource: {fileID: 1026268783}
+  flameManager: {fileID: 1676618076}
   collectSound: {fileID: 8300000, guid: 14145b2872822204e852db92f7bfe15e, type: 3}
+  groundCheck: {fileID: 986584728}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &1026268782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18018,7 +18027,7 @@ GameObject:
   - component: {fileID: 1453856033}
   - component: {fileID: 1453856032}
   - component: {fileID: 1453856031}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23839,6 +23848,10 @@ PrefabInstance:
     - target: {fileID: 7764680362214544310, guid: 8917d3f0f71b5e24d8e421114255a58d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648331802030086684, guid: 8917d3f0f71b5e24d8e421114255a58d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.356
       objectReference: {fileID: 0}
     - target: {fileID: 9161927428779150623, guid: 8917d3f0f71b5e24d8e421114255a58d, type: 3}
       propertyPath: m_Name
