@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,59 +13,87 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 3f;
     public int maxJump = 2;
 
+    [Header("Ground Check")]
+    public Transform groundCheck;
+    public LayerMask groundLayer;
+    public float groundCheckDistance = 0.7f;
+    public float maxSlopeAngle = 60f;
+
     [Header("Collect")]
     public FlameManager_1 flameManager;
     public AudioClip collectSound;
 
-    [Header("Ground Check")]
-    public Transform groundCheck;
-    public LayerMask groundLayer;
     private bool isGrounded;
-
-    private int jumpCount = 0;
     private bool isAttacking = false;
+    private int jumpCount = 0;
+
+    // Leo dốc
+    private float moveInput;
+    private bool onSlope;
+    private Vector2 slopeNormal;
+    private float defaultGravity;
+
+    void Start()
+    {
+        defaultGravity = rb.gravityScale;
+    }
 
     void Update()
     {
+        // Ground Check
         isGrounded = Physics2D.OverlapCircle(
-       groundCheck.position,
-       0.3f,
-       groundLayer);
+            groundCheck.position,
+            0.3f,
+            groundLayer);
 
         animator.SetBool("isGrounded", isGrounded);
         animator.SetFloat("yVelocity", rb.linearVelocity.y);
+
+        // Đọc input
+        moveInput = 0f;
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            moveInput = 1f;
+            spriteRenderer.flipX = false;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            moveInput = -1f;
+            spriteRenderer.flipX = true;
+        }
+
+        animator.SetBool("isMoving", moveInput != 0);
 
         HandleAttack();
 
         if (!isAttacking)
         {
-            HandleMovement();
             HandleJump();
         }
     }
 
-    //========================
-    // Movement
-    //========================
-    private void HandleMovement()
+    void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.D))
+        CheckSlope();
+
+        if (onSlope && moveInput != 0f)
         {
-            rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);
-            animator.SetBool("isMoving", true);
-            spriteRenderer.flipX = false;
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            rb.linearVelocity = new Vector2(-moveSpeed, rb.linearVelocity.y);
-            animator.SetBool("isMoving", true);
-            spriteRenderer.flipX = true;
+            // Di chuyển theo hướng của mặt dốc
+            Vector2 slopeDir = new Vector2(slopeNormal.y, -slopeNormal.x).normalized;
+
+            if (Mathf.Sign(slopeDir.x) != Mathf.Sign(moveInput))
+                slopeDir = -slopeDir;
+
+            rb.linearVelocity = slopeDir * moveSpeed;
         }
         else
         {
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-            animator.SetBool("isMoving", false);
+            rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
         }
+
+        // Không bị trượt khi đứng trên dốc
+        rb.gravityScale = onSlope ? 0f : defaultGravity;
     }
 
     //========================
@@ -76,9 +104,14 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && jumpCount < maxJump)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
+
+            rb.gravityScale = defaultGravity;
+
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
             jumpCount++;
+
+            onSlope = false;
         }
     }
 
@@ -91,18 +124,43 @@ public class PlayerMovement : MonoBehaviour
         {
             isAttacking = true;
 
-            // Dừng di chuyển trước khi đánh
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
 
             animator.SetBool("isMoving", false);
+
             animator.SetTrigger("Attack");
         }
     }
 
-    // Được gọi bằng Animation Event
+    // Animation Event
     public void FinishAttack()
     {
         isAttacking = false;
+    }
+
+    //========================
+    // Slope Check
+    //========================
+    private void CheckSlope()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(
+            rb.position,
+            Vector2.down,
+            groundCheckDistance,
+            groundLayer);
+
+        if (hit.collider != null)
+        {
+            slopeNormal = hit.normal;
+
+            float angle = Vector2.Angle(hit.normal, Vector2.up);
+
+            onSlope = angle > 1f && angle <= maxSlopeAngle;
+        }
+        else
+        {
+            onSlope = false;
+        }
     }
 
     //========================
@@ -110,20 +168,41 @@ public class PlayerMovement : MonoBehaviour
     //========================
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Chỉ reset jump khi chạm Ground
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             jumpCount = 0;
+            isGrounded = true;
+            onSlope = false;
         }
     }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            isGrounded = false;
+        }
+    }
+
+    //========================
+    // Collect Flame
+    //========================
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Flame"))
         {
-            audioSource.PlayOneShot(collectSound);
+            if (audioSource != null && collectSound != null)
+            {
+                audioSource.PlayOneShot(collectSound);
+            }
 
             Destroy(other.gameObject);
 
-            flameManager.flameCount++;
+            if (flameManager != null)
+            {
+                flameManager.flameCount++;
+            }
         }
     }
 }
