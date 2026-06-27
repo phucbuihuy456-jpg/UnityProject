@@ -2,68 +2,127 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody2D rb;       // Rigidbody2D của nhân vật
-    public Animator animator;    // Animator cho chạy/idle
-    public SpriteRenderer spriteRenderer; // SpriteRenderer để lật hướng
+    [Header("Components")]
+    public Rigidbody2D rb;
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
+    public AudioSource audioSource;
+
+    [Header("Movement")]
     public float moveSpeed = 3.5f;
-    public float jumpForce = 8f;
-
-    private bool isGrounded = true; // Giả lập đơn giản để nhảy
-    public FlameManager_1 flameManager; // Tham chiếu đến FlameManager
-
-    private int jumpCount = 0;
+    public float jumpForce = 3f;
     public int maxJump = 2;
 
-    public AudioSource audioSource;
+    [Header("Collect")]
+    public FlameManager_1 flameManager;
     public AudioClip collectSound;
+
+    [Header("Ground Check")]
+    public Transform groundCheck;
+    public LayerMask groundLayer;
+    private bool isGrounded;
+
+    private int jumpCount = 0;
+    private bool isAttacking = false;
+
     void Update()
     {
-        // --- Di chuyển ngang ---
+        isGrounded = Physics2D.OverlapCircle(
+       groundCheck.position,
+       0.3f,
+       groundLayer);
+
+        animator.SetBool("isGrounded", isGrounded);
+        animator.SetFloat("yVelocity", rb.linearVelocity.y);
+
+        HandleAttack();
+
+        if (!isAttacking)
+        {
+            HandleMovement();
+            HandleJump();
+        }
+    }
+
+    //========================
+    // Movement
+    //========================
+    private void HandleMovement()
+    {
         if (Input.GetKey(KeyCode.D))
         {
-            // Di chuyển sang phải
             rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);
             animator.SetBool("isMoving", true);
-            spriteRenderer.flipX = false; // Hướng mặt về phải
+            spriteRenderer.flipX = false;
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            // Di chuyển sang trái
             rb.linearVelocity = new Vector2(-moveSpeed, rb.linearVelocity.y);
             animator.SetBool("isMoving", true);
-            spriteRenderer.flipX = true; // Hướng mặt về trái
+            spriteRenderer.flipX = true;
         }
         else
         {
-            // Không nhấn gì → đứng yên
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             animator.SetBool("isMoving", false);
         }
+    }
 
-        // --- Nhảy ---
+    //========================
+    // Jump
+    //========================
+    private void HandleJump()
+    {
         if (Input.GetKeyDown(KeyCode.W) && jumpCount < maxJump)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); // Reset vận tốc y trước khi nhảy
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
             jumpCount++;
-            isGrounded = false;
         }
     }
 
-    // Khi chạm bất kỳ collider nào → bật isGrounded
-    void OnCollisionEnter2D(Collision2D collision)
+    //========================
+    // Attack
+    //========================
+    private void HandleAttack()
     {
-        isGrounded = true;
-        jumpCount = 0; // Reset số lần nhảy khi chạm đất
+        if (Input.GetKeyDown(KeyCode.J) && !isAttacking)
+        {
+            isAttacking = true;
+
+            // Dừng di chuyển trước khi đánh
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+
+            animator.SetBool("isMoving", false);
+            animator.SetTrigger("Attack");
+        }
     }
 
+    // Được gọi bằng Animation Event
+    public void FinishAttack()
+    {
+        isAttacking = false;
+    }
+
+    //========================
+    // Collision
+    //========================
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            jumpCount = 0;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Nếu chạm vào collider có tag "Ground" → bật isGrounded
-        if (other.gameObject.CompareTag("Flame"))
+        if (other.CompareTag("Flame"))
         {
             audioSource.PlayOneShot(collectSound);
-            Destroy(other.gameObject); // Hủy đối tượng lửa
+
+            Destroy(other.gameObject);
+
             flameManager.flameCount++;
         }
     }
