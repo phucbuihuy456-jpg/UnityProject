@@ -23,6 +23,12 @@ public class PlayerMovement : MonoBehaviour
     public FlameManager_1 flameManager;
     public AudioClip collectSound;
 
+    [Header("Attack Detection")]
+    public float attackRange = 1.0f;
+    public float attackDamage = 1f;
+    public Transform attackPoint;
+    public float attackDelay = 0.15f;
+
     private bool isGrounded;
     private bool isAttacking = false;
     private int jumpCount = 0;
@@ -134,6 +140,9 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isMoving", false);
 
             animator.SetTrigger("Attack");
+
+            // Option C: Call damage check after a short delay to sync with animation swing
+            Invoke("CheckAttackHit", attackDelay);
         }
     }
 
@@ -141,6 +150,40 @@ public class PlayerMovement : MonoBehaviour
     public void FinishAttack()
     {
         isAttacking = false;
+    }
+
+    public void ResetAttack()
+    {
+        isAttacking = false;
+        CancelInvoke("CheckAttackHit"); // Cancel pending attack check if interrupted
+    }
+
+    private void CheckAttackHit()
+    {
+        Vector2 position = attackPoint != null 
+            ? (Vector2)attackPoint.position 
+            : (Vector2)transform.position + (spriteRenderer != null && spriteRenderer.flipX ? Vector2.left : Vector2.right) * 0.8f;
+
+        // Find all colliders within the attack range
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(position, attackRange);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            // Call TakeDamage if the hit object is a Zombie
+            ZombieAI zombie = enemy.GetComponent<ZombieAI>();
+            if (zombie != null)
+            {
+                zombie.TakeDamage(attackDamage);
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Vector2 position = attackPoint != null 
+            ? (Vector2)attackPoint.position 
+            : (Vector2)transform.position + (spriteRenderer != null && spriteRenderer.flipX ? Vector2.left : Vector2.right) * 0.8f;
+        Gizmos.DrawWireSphere(position, attackRange);
     }
 
     //========================
@@ -160,7 +203,15 @@ public class PlayerMovement : MonoBehaviour
 
             float angle = Vector2.Angle(hit.normal, Vector2.up);
 
-            onSlope = angle > 1f && angle <= maxSlopeAngle;
+            bool isStairs = hit.collider.CompareTag("Stairs");
+            onSlope = (angle > 1f && angle <= maxSlopeAngle) || isStairs;
+
+            // If they are blocky stairs (flat top surfaces), synthesize a slope normal to climb smoothly
+            if (isStairs && angle <= 1f)
+            {
+                float dir = moveInput != 0f ? Mathf.Sign(moveInput) : (spriteRenderer.flipX ? -1f : 1f);
+                slopeNormal = new Vector2(-dir, 1f).normalized;
+            }
         }
         else
         {
