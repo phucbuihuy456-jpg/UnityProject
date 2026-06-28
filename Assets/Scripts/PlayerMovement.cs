@@ -46,6 +46,11 @@ public class PlayerMovement : MonoBehaviour
             0.3f,
             groundLayer);
 
+        if (isGrounded)
+        {
+            jumpCount = 0;
+        }
+
         animator.SetBool("isGrounded", isGrounded);
         animator.SetFloat("yVelocity", rb.linearVelocity.y);
 
@@ -103,13 +108,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W) && jumpCount < maxJump)
         {
+            jumpCount++;
+
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
 
             rb.gravityScale = defaultGravity;
 
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-
-            jumpCount++;
 
             onSlope = false;
         }
@@ -166,16 +171,6 @@ public class PlayerMovement : MonoBehaviour
     //========================
     // Collision
     //========================
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Chỉ reset jump khi chạm Ground
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            jumpCount = 0;
-            isGrounded = true;
-            onSlope = false;
-        }
-    }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
