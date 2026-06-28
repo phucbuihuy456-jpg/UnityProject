@@ -7,11 +7,12 @@ TagManager:
   - Flame
   - Door
   - Trap
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - 
