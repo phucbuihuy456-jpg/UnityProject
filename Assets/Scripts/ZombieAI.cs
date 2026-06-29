@@ -195,16 +195,18 @@ public class ZombieAI : MonoBehaviour
 
         currentHealth -= damageAmount;
 
-        // Kích hoạt animation bị thương (nếu có)
-        if (animator != null)
-        {
-            animator.SetTrigger("Hurt");
-        }
-
         // Kiểm tra xem máu đã hết chưa
         if (currentHealth <= 0)
         {
             Die();
+        }
+        else
+        {
+            // Kích hoạt animation bị thương (nếu có) chỉ khi còn sống
+            if (animator != null)
+            {
+                animator.SetTrigger("Hurt");
+            }
         }
     }
 
@@ -254,17 +256,33 @@ public class ZombieAI : MonoBehaviour
     bool CheckWall()
     {
         Vector2 checkOrigin = (Vector2)transform.position + new Vector2(isFacingRight ? 0.5f : -0.5f, 0);
-        RaycastHit2D hit = Physics2D.Raycast(checkOrigin, isFacingRight ? Vector2.right : Vector2.left, wallCheckDistance, obstacleLayer);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(checkOrigin, isFacingRight ? Vector2.right : Vector2.left, wallCheckDistance, obstacleLayer);
         Debug.DrawRay(checkOrigin, (isFacingRight ? Vector2.right : Vector2.left) * wallCheckDistance, Color.red);
-        return hit.collider != null;
+        
+        foreach (var hit in hits)
+        {
+            if (hit.collider != null && hit.collider.gameObject != gameObject && !hit.collider.isTrigger)
+            {
+                return true; // Hit a solid wall
+            }
+        }
+        return false;
     }
 
     bool CheckLedge()
     {
         Vector2 checkOrigin = (Vector2)transform.position + new Vector2(isFacingRight ? 0.5f : -0.5f, 0);
-        RaycastHit2D hit = Physics2D.Raycast(checkOrigin, Vector2.down, ledgeCheckDistance, obstacleLayer);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(checkOrigin, Vector2.down, ledgeCheckDistance, obstacleLayer);
         Debug.DrawRay(checkOrigin, Vector2.down * ledgeCheckDistance, Color.yellow);
-        return hit.collider == null;
+        
+        foreach (var hit in hits)
+        {
+            if (hit.collider != null && hit.collider.gameObject != gameObject && !hit.collider.isTrigger)
+            {
+                return false; // Found solid ground, not a ledge
+            }
+        }
+        return true; // No solid ground found, it is a ledge
     }
 
     // Hiển thị vòng tròn tầm nhìn và tầm đánh trong cửa sổ Scene
