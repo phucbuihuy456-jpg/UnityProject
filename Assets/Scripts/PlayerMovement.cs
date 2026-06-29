@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
             0.3f,
             groundLayer);
 
-        if (isGrounded)
+        if (isGrounded && rb.linearVelocity.y <= 0.01f)
         {
             jumpCount = 0;
         }
