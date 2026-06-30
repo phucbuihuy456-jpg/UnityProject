@@ -29,6 +29,10 @@ public class PlayerMovement : MonoBehaviour
     public Transform attackPoint;
     public float attackDelay = 0.15f;
 
+    [Header("Step Climb")]
+    public float stepHeight = 0.4f;
+    public float stepLookAhead = 0.4f;
+
     private bool isGrounded;
     private bool isAttacking = false;
     private int jumpCount = 0;
@@ -47,10 +51,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Ground Check
-        isGrounded = Physics2D.OverlapCircle(
-            groundCheck.position,
-            0.3f,
-            groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer);
 
         if (isGrounded && rb.linearVelocity.y <= 0.01f)
         {
@@ -88,7 +89,13 @@ public class PlayerMovement : MonoBehaviour
     {
         CheckSlope();
 
-        if (onSlope && moveInput != 0f)
+        if (moveInput != 0f)
+        {
+            StepClimb();
+        }
+
+        // Only apply slope physics if the player is grounded and not jumping
+        if (onSlope && isGrounded && moveInput != 0f && rb.linearVelocity.y <= 0.1f)
         {
             // Di chuyển theo hướng của mặt dốc
             Vector2 slopeDir = new Vector2(slopeNormal.y, -slopeNormal.x).normalized;
@@ -103,8 +110,44 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
         }
 
-        // Không bị trượt khi đứng trên dốc
-        rb.gravityScale = onSlope ? 0f : defaultGravity;
+        // Only disable gravity if the player is actually grounded on the slope
+        rb.gravityScale = (onSlope && isGrounded && rb.linearVelocity.y <= 0.1f) ? 0f : defaultGravity;
+    }
+
+    private void StepClimb()
+    {
+        if (moveInput == 0f)
+            return;
+
+        float direction = Mathf.Sign(moveInput);
+        Vector2 feetPos = groundCheck.position;
+
+        // Shoot raycast slightly above the ground (e.g. 0.05f) to detect step
+        Vector2 lowerOrigin = feetPos + Vector2.up * 0.05f;
+        RaycastHit2D hitLower = Physics2D.Raycast(
+            lowerOrigin,
+            new Vector2(direction, 0f),
+            stepLookAhead,
+            groundLayer
+        );
+
+        if (hitLower.collider != null && !hitLower.collider.isTrigger)
+        {
+            // Shoot raycast at maximum step height to see if it's clear
+            Vector2 upperOrigin = feetPos + Vector2.up * stepHeight;
+            RaycastHit2D hitUpper = Physics2D.Raycast(
+                upperOrigin,
+                new Vector2(direction, 0f),
+                stepLookAhead,
+                groundLayer
+            );
+
+            if (hitUpper.collider == null)
+            {
+                // Lift player slightly higher and nudge them slightly further forward
+                rb.position += new Vector2(direction * 0.15f, stepHeight + 0.1f);
+            }
+        }
     }
 
     //========================
@@ -160,9 +203,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckAttackHit()
     {
-        Vector2 position = attackPoint != null 
-            ? (Vector2)attackPoint.position 
-            : (Vector2)transform.position + (spriteRenderer != null && spriteRenderer.flipX ? Vector2.left : Vector2.right) * 0.8f;
+        Vector2 position =
+            attackPoint != null
+                ? (Vector2)attackPoint.position
+                : (Vector2)transform.position
+                    + (
+                        spriteRenderer != null && spriteRenderer.flipX
+                            ? Vector2.left
+                            : Vector2.right
+                    ) * 0.8f;
 
         // Find all colliders within the attack range
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(position, attackRange);
@@ -180,9 +229,15 @@ public class PlayerMovement : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Vector2 position = attackPoint != null 
-            ? (Vector2)attackPoint.position 
-            : (Vector2)transform.position + (spriteRenderer != null && spriteRenderer.flipX ? Vector2.left : Vector2.right) * 0.8f;
+        Vector2 position =
+            attackPoint != null
+                ? (Vector2)attackPoint.position
+                : (Vector2)transform.position
+                    + (
+                        spriteRenderer != null && spriteRenderer.flipX
+                            ? Vector2.left
+                            : Vector2.right
+                    ) * 0.8f;
         Gizmos.DrawWireSphere(position, attackRange);
     }
 
@@ -195,7 +250,8 @@ public class PlayerMovement : MonoBehaviour
             rb.position,
             Vector2.down,
             groundCheckDistance,
-            groundLayer);
+            groundLayer
+        );
 
         if (hit.collider != null)
         {
@@ -209,7 +265,8 @@ public class PlayerMovement : MonoBehaviour
             // If they are blocky stairs (flat top surfaces), synthesize a slope normal to climb smoothly
             if (isStairs && angle <= 1f)
             {
-                float dir = moveInput != 0f ? Mathf.Sign(moveInput) : (spriteRenderer.flipX ? -1f : 1f);
+                float dir =
+                    moveInput != 0f ? Mathf.Sign(moveInput) : (spriteRenderer.flipX ? -1f : 1f);
                 slopeNormal = new Vector2(-dir, 1f).normalized;
             }
         }
