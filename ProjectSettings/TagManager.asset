@@ -9,6 +9,7 @@ TagManager:
   - Trap
   - Enemy
   - Stair
+  - Ground
   layers:
   - Default
   - TransparentFX

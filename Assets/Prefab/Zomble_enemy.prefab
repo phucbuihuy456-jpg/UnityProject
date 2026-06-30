@@ -131,15 +131,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZombieAI
   walkSpeed: 1
   chaseSpeed: 2
-  invertFlip: 0
   maxHealth: 3
+  staggerDuration: 0.5
   attackRange: 1
   attackDamage: 1
   attackCooldown: 1.2
+  attackAnimationDuration: 5
   detectionRange: 3.94
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 1
+  patrolRange: 4
   avoidFalling: 0
   wallCheckDistance: 0.5
   ledgeCheckDistance: 1
