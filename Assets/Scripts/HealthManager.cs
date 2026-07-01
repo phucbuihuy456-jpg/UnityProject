@@ -29,7 +29,7 @@ public class HealthManager : MonoBehaviour
     }
     public void TakeDamage(float damageAmount)
     {
-       currentHealth = Mathf.Max(currentHealth - damageAmount, 0); // Đảm bảo không giảm dưới 0
+        currentHealth = Mathf.Max(currentHealth - damageAmount, 0); // Đảm bảo không giảm dưới 0
         if (currentHealth > 0)
         {
             // player hurt
