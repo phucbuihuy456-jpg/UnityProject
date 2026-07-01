@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -43,6 +44,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 slopeNormal;
     private float defaultGravity;
 
+    [Header("Special Attack")]
+    public GameObject specialAttackPrefab;
+    public Transform firePoint;
+
+    public float specialCooldown = 5f;
+    private bool canSpecial = true;
+    private bool isSpecialAttacking = false;
+
     void Start()
     {
         defaultGravity = rb.gravityScale;
@@ -77,16 +86,73 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetBool("isMoving", moveInput != 0);
 
-        HandleAttack();
+        if (!isSpecialAttacking)
+        {
+            HandleAttack();
+        }
 
         if (!isAttacking)
+        {
+            HandleSpecialAttack();
+        }
+
+        if (!isAttacking && !isSpecialAttacking)
         {
             HandleJump();
         }
     }
 
+    private void HandleSpecialAttack()
+    {
+        if (Input.GetKeyDown(KeyCode.K) && canSpecial && !isSpecialAttacking && !isAttacking)
+        {
+            isSpecialAttacking = true;
+            canSpecial = false;
+
+            animator.SetTrigger("SpecialAttack");
+
+            StartCoroutine(SpecialCooldown());
+        }
+    }
+
+    private IEnumerator SpecialCooldown()
+    {
+        yield return new WaitForSeconds(specialCooldown);
+
+        canSpecial = true;
+    }
+
+    public void SpawnSwordWave()
+    {
+        if (specialAttackPrefab == null || firePoint == null)
+            return;
+
+        GameObject wave =
+            Instantiate(specialAttackPrefab,
+                        firePoint.position,
+                        Quaternion.identity);
+
+        float dir = spriteRenderer.flipX ? -1f : 1f;
+
+        SwordWave sword = wave.GetComponent<SwordWave>();
+
+        if (sword != null)
+            sword.SetDirection(dir);
+    }
+
+    public void FinishSpecialAttack()
+    {
+        isSpecialAttacking = false;
+    }
+
     void FixedUpdate()
     {
+        if (isSpecialAttacking)
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            return;
+        }
+
         CheckSlope();
 
         if (moveInput != 0f)
