@@ -22,6 +22,10 @@ public class SkeletonBoss : MonoBehaviour
     [SerializeField]
     private float currentHealth;
 
+    // THÊM 2 DÒNG NÀY VÀO ĐÂY ĐỂ UI CÓ THỂ ĐỌC ĐƯỢC DỮ LIỆU MÁU
+    public float MaxHealth => maxHealth;
+    public float CurrentHealth => currentHealth;
+
     [SerializeField]
     private float patrolSpeed = 2f;
 
@@ -549,4 +553,5 @@ public class SkeletonBoss : MonoBehaviour
             Gizmos.DrawWireSphere(attackPoint.position, swingRadius);
         }
     }
+
 }
