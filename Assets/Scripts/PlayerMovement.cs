@@ -217,11 +217,25 @@ public class PlayerMovement : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(position, attackRange);
         foreach (Collider2D enemy in hitEnemies)
         {
-            // Call TakeDamage if the hit object is a Zombie
+            // Gây sát thương nếu đối tượng là Zombie
             ZombieAI zombie = enemy.GetComponent<ZombieAI>();
             if (zombie != null)
             {
                 zombie.TakeDamage(attackDamage);
+            }
+
+            // Gây sát thương nếu đối tượng là Skeleton
+            SkeletonAI skeleton = enemy.GetComponent<SkeletonAI>();
+            if (skeleton != null)
+            {
+                skeleton.TakeDamage(attackDamage);
+            }
+
+            // Gây sát thương nếu đối tượng là Bat (Dơi)
+            BatAI bat = enemy.GetComponent<BatAI>();
+            if (bat != null)
+            {
+                bat.TakeDamage(attackDamage);
             }
         }
     }
