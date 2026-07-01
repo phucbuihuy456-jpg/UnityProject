@@ -7,14 +7,16 @@ TagManager:
   - Flame
   - Door
   - Trap
+  - Enemy
+  - Stair
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - Enemy
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 

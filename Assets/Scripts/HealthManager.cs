@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 public class HealthManager : MonoBehaviour
@@ -34,6 +34,11 @@ public class HealthManager : MonoBehaviour
         {
             // player hurt
             animator.SetTrigger("Hurt");
+            PlayerMovement pm = GetComponent<PlayerMovement>();
+            if (pm != null)
+            {
+                pm.ResetAttack();
+            }
         }
         else
         {
