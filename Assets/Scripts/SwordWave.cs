@@ -30,10 +30,25 @@ public class SwordWave : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         ZombieAI zombie = other.GetComponent<ZombieAI>();
-
         if (zombie != null)
         {
             zombie.TakeDamage(damage);
+            Destroy(gameObject);
+            return;
+        }
+
+        SkeletonAI skeleton = other.GetComponent<SkeletonAI>();
+        if (skeleton != null)
+        {
+            skeleton.TakeDamage(damage);
+            Destroy(gameObject);
+            return;
+        }
+
+        BatAI bat = other.GetComponent<BatAI>();
+        if (bat != null)
+        {
+            bat.TakeDamage(damage);
             Destroy(gameObject);
             return;
         }

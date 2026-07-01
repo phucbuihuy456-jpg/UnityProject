@@ -31,7 +31,7 @@ public class DungeonDoor : MonoBehaviour
     void Start()
     {
         // Tự tìm người chơi qua component PlayerMovement (không cần đặt Tag)
-        PlayerMovement pm = Object.FindFirstObjectByType<PlayerMovement>();
+        PlayerMovement pm = Object.FindAnyObjectByType<PlayerMovement>();
         if (pm != null)
             player = pm.transform;
 
