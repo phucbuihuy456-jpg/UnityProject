@@ -52,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
     private bool canSpecial = true;
     private bool isSpecialAttacking = false;
 
+    [Header("Footstep")]
+    public AudioClip footstepSound;
+
     void Start()
     {
         defaultGravity = rb.gravityScale;
@@ -99,6 +102,16 @@ public class PlayerMovement : MonoBehaviour
         if (!isAttacking && !isSpecialAttacking)
         {
             HandleJump();
+        }
+    }
+
+    public void PlayFootstep()
+    {
+        if (audioSource != null &&
+            footstepSound != null &&
+            isGrounded)
+        {
+            audioSource.PlayOneShot(footstepSound, 0.3f);
         }
     }
 
