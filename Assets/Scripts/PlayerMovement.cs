@@ -316,6 +316,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 bat.TakeDamage(attackDamage);
             }
+
+            // Gây sát thương nếu đối tượng là SkeletonBoss (Boss)
+            SkeletonBoss skeletonBoss = enemy.GetComponent<SkeletonBoss>();
+            if (skeletonBoss != null)
+            {
+                skeletonBoss.TakeDamage(attackDamage);
+            }
         }
     }
 

@@ -53,6 +53,14 @@ public class SwordWave : MonoBehaviour
             return;
         }
 
+        SkeletonBoss skeletonBoss = other.GetComponent<SkeletonBoss>();
+        if (skeletonBoss != null)
+        {
+            skeletonBoss.TakeDamage(damage);
+            Destroy(gameObject);
+            return;
+        }
+
         if (other.CompareTag("Ground"))
         { 
             Destroy(gameObject);
