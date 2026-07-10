@@ -11,6 +11,12 @@ public class FlameManager_1 : MonoBehaviour
     public int targetFlames = 9;
     void Start()
     {
+        // Nạp lại số flame đã nhặt từ scene trước (giữ đồng nhất giữa các màn).
+        if (GameProgress.HasData)
+        {
+            flameCount = GameProgress.FlameCount;
+        }
+
         if (winPanel != null)
         {
             winPanel.SetActive(false);
@@ -20,7 +26,13 @@ public class FlameManager_1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        flameText.text = " : " + flameCount.ToString();
+        // Đồng bộ số flame để giữ khi chuyển scene.
+        GameProgress.SaveFlames(flameCount);
+
+        if (flameText != null)
+        {
+            flameText.text = " : " + flameCount.ToString();
+        }
         if (flameCount >= 4 && !isDoorOpen)
         {
             isDoorOpen = true;
@@ -29,10 +41,12 @@ public class FlameManager_1 : MonoBehaviour
                 Destroy(Door);
             }
         }
-        if (flameCount >= targetFlames)
-        {
-            winPanel.SetActive(true);
-            Time.timeScale = 0f;
-        }
+        // [TẠM TẮT] Logic thắng khi nhặt đủ lửa - tạm thời không dùng để win nữa.
+        // Bật lại bằng cách bỏ comment khối dưới.
+        // if (winPanel != null && flameCount >= targetFlames)
+        // {
+        //     winPanel.SetActive(true);
+        //     Time.timeScale = 0f;
+        // }
     }
 }

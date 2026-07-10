@@ -11,8 +11,17 @@ public class HealthManager : MonoBehaviour
     public GameObject deathPanel;
     void Start()
     {
-        currentHealth = startingHealth;
         animator = GetComponent<Animator>();
+
+        // Nạp lại máu đã lưu khi chuyển scene; nếu chưa có thì dùng máu khởi tạo.
+        if (GameProgress.HasData)
+            currentHealth = Mathf.Clamp(GameProgress.Health, 0, startingHealth);
+        else
+            currentHealth = startingHealth;
+
+        // Đồng bộ lại giá trị đã lưu.
+        GameProgress.SaveHealth(currentHealth);
+
         if (deathPanel != null)
         {
             deathPanel.SetActive(false);
@@ -30,6 +39,7 @@ public class HealthManager : MonoBehaviour
     public void TakeDamage(float damageAmount)
     {
         currentHealth = Mathf.Max(currentHealth - damageAmount, 0); // Đảm bảo không giảm dưới 0
+        GameProgress.SaveHealth(currentHealth); // Lưu lại máu hiện tại để giữ khi chuyển scene
         if (currentHealth > 0)
         {
             // player hurt

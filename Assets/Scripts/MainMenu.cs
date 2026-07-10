@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
     public GameObject howToPlayPanel;
     public void LoadGame()
     {
+        GameProgress.Clear(); // Bắt đầu game mới: reset máu & flame về mặc định
         SceneManager.LoadScene("PlayScreen");
     }
     public void QuitGame()

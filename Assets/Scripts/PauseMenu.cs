@@ -56,6 +56,17 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
+    // Hàm gọi khi nhấn nút Restart trong panel "You died".
+    // Tải lại màn chơi hiện tại -> người chơi quay về điểm xuất phát của màn.
+    public void RestartLevel()
+    {
+        // Chơi lại từ đầu màn: reset máu & flame về mặc định.
+        GameProgress.Clear();
+        // Phải trả thời gian về 1 trước khi load lại, nếu không scene mới sẽ bị đơ.
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     // Hàm gọi khi nhấn nút Back to menu
     public void BackToMenu()
     {

@@ -30,6 +30,12 @@ public class PlayerMovement : MonoBehaviour
     public Transform attackPoint;
     public float attackDelay = 0.15f;
 
+    [Header("Attack Sound")]
+    public AudioClip attackSound;
+    public AudioClip specialAttackSound;
+    [Range(0f, 1f)]
+    public float attackVolume = 1f;
+
     [Header("Step Climb")]
     public float stepHeight = 0.4f;
     public float stepLookAhead = 0.4f;
@@ -37,6 +43,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private bool isAttacking = false;
     private int jumpCount = 0;
+
+    // Khóa điều khiển (vd khi đang nói chuyện với NPC)
+    private bool inputLocked = false;
 
     // Leo dốc
     private float moveInput;
@@ -73,6 +82,14 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isGrounded", isGrounded);
         animator.SetFloat("yVelocity", rb.linearVelocity.y);
 
+        // Khóa điều khiển khi đang nói chuyện: đứng yên, không nhận input
+        if (inputLocked)
+        {
+            moveInput = 0f;
+            animator.SetBool("isMoving", false);
+            return;
+        }
+
         // Đọc input
         moveInput = 0f;
 
@@ -105,6 +122,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // Gọi từ NPCInteract để khóa/mở di chuyển khi nói chuyện
+    public void SetInputLocked(bool locked)
+    {
+        inputLocked = locked;
+        if (locked)
+        {
+            moveInput = 0f;
+            if (rb != null)
+                rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+            if (animator != null)
+                animator.SetBool("isMoving", false);
+        }
+    }
+
     public void PlayFootstep()
     {
         if (audioSource != null &&
@@ -112,6 +143,22 @@ public class PlayerMovement : MonoBehaviour
             isGrounded)
         {
             audioSource.PlayOneShot(footstepSound, 0.3f);
+        }
+    }
+
+    public void PlayAttackSound()
+    {
+        if (audioSource != null && attackSound != null)
+        {
+            audioSource.PlayOneShot(attackSound, attackVolume);
+        }
+    }
+
+    public void PlaySpecialAttackSound()
+    {
+        if (audioSource != null && specialAttackSound != null)
+        {
+            audioSource.PlayOneShot(specialAttackSound, attackVolume);
         }
     }
 
@@ -123,6 +170,8 @@ public class PlayerMovement : MonoBehaviour
             canSpecial = false;
 
             animator.SetTrigger("SpecialAttack");
+
+            PlaySpecialAttackSound();
 
             StartCoroutine(SpecialCooldown());
         }
@@ -262,6 +311,8 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isMoving", false);
 
             animator.SetTrigger("Attack");
+
+            PlayAttackSound();
 
             // Option C: Call damage check after a short delay to sync with animation swing
             Invoke("CheckAttackHit", attackDelay);

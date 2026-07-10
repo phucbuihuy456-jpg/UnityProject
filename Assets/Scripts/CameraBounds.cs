@@ -66,8 +66,10 @@ public class CameraBounds : CinemachineExtension
     {
         minX = maxX = minY = maxY = 0f;
 
-        if (!useManualBounds && boundsTilemap != null)
+        if (!useManualBounds)
         {
+            if (boundsTilemap == null)
+                return false; // chưa gán tilemap, chưa bật manual -> không giới hạn
             BoundsInt cb = boundsTilemap.cellBounds;
             if (cb.size.x <= 0 || cb.size.y <= 0)
                 return false; // tilemap trống
