@@ -17,7 +17,7 @@ public class LampkeeperBoss : MonoBehaviour
 
     [Header("Stats")]
     [SerializeField]
-    private float maxHealth = 300f;
+    private float maxHealth = 150f;
 
     [SerializeField]
     private float currentHealth;
@@ -37,7 +37,7 @@ public class LampkeeperBoss : MonoBehaviour
 
     [Tooltip("Tầm xa của luồng gió Snuff Out")]
     [SerializeField]
-    private float snuffRange = 6f;
+    private float snuffRange = 4f;
 
     [SerializeField]
     private float snuffCooldown = 3.5f;
@@ -93,9 +93,6 @@ public class LampkeeperBoss : MonoBehaviour
 
     [SerializeField]
     private float deathAnimationDuration = 1.1f;
-
-    [SerializeField]
-    private bool destroyAfterDeath = false;
 
     // Component References
     private Rigidbody2D rb;
@@ -519,10 +516,7 @@ public class LampkeeperBoss : MonoBehaviour
         // Nối cutscene lantern-shatter reveal tại đây (gán trong Inspector)
         onDeathAnimationComplete?.Invoke();
 
-        if (destroyAfterDeath)
-        {
-            Destroy(gameObject, 2f);
-        }
+        Destroy(gameObject, 2f);
 
         this.enabled = false;
     }

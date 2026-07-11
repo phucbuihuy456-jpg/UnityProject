@@ -331,6 +331,16 @@ public class PlayerMovement : MonoBehaviour
         CancelInvoke("CheckAttackHit"); // Cancel pending attack check if interrupted
     }
 
+    public void ResetState()
+    {
+        isAttacking = false;
+        isSpecialAttacking = false;
+        inputLocked = false;
+        jumpCount = 0;
+        canSpecial = true;
+        CancelInvoke("CheckAttackHit");
+    }
+
     private void CheckAttackHit()
     {
         Vector2 position =
@@ -373,6 +383,13 @@ public class PlayerMovement : MonoBehaviour
             if (skeletonBoss != null)
             {
                 skeletonBoss.TakeDamage(attackDamage);
+            }
+
+            // Gây sát thương nếu đối tượng là LampkeeperBoss (Boss)
+            LampkeeperBoss lampkeeperBoss = enemy.GetComponent<LampkeeperBoss>();
+            if (lampkeeperBoss != null)
+            {
+                lampkeeperBoss.TakeDamage(attackDamage);
             }
         }
     }

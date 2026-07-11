@@ -47,6 +47,12 @@ public class HealthManager : MonoBehaviour
         {
             deathPanel.SetActive(false);
         }
+
+        PlayerMovement pm = GetComponent<PlayerMovement>();
+        if (pm != null)
+        {
+            pm.ResetState();
+        }
     }
 
     public void TakeDamage(float damageAmount)
