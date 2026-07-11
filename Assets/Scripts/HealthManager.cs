@@ -28,14 +28,27 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Hồi sinh player trong cùng run: hồi đầy máu, reset animation chết, tắt death panel.
+    /// </summary>
+    public void ResetHealth()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        currentHealth = startingHealth;
+        GameProgress.SaveHealth(currentHealth);
+
+        if (animator != null)
         {
-            TakeDamage(1);
+            // Đưa animator về state mặc định (thoát khỏi animation Die)
+            animator.Rebind();
+            animator.Update(0f);
+        }
+
+        if (deathPanel != null)
+        {
+            deathPanel.SetActive(false);
         }
     }
+
     public void TakeDamage(float damageAmount)
     {
         currentHealth = Mathf.Max(currentHealth - damageAmount, 0); // Đảm bảo không giảm dưới 0

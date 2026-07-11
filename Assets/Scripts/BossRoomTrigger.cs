@@ -16,6 +16,19 @@ public class BossRoomTrigger : MonoBehaviour
     // Biến này để đảm bảo sự kiện chỉ kích hoạt 1 lần duy nhất khi mới bước vào
     private bool hasTriggered = false;
 
+    /// <summary>
+    /// Cho phép kích hoạt lại (dùng khi player hồi sinh đánh lại boss):
+    /// ẩn thanh máu boss và chờ player bước vào phòng lần nữa.
+    /// </summary>
+    public void ResetTrigger()
+    {
+        hasTriggered = false;
+        if (bossHealthBarUI != null)
+        {
+            bossHealthBarUI.SetActive(false);
+        }
+    }
+
     void Start()
     {
         // Tắt thanh máu boss đi khi mới vào scene

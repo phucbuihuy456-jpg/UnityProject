@@ -61,6 +61,14 @@ public class SwordWave : MonoBehaviour
             return;
         }
 
+        LampkeeperBoss lampkeeperBoss = other.GetComponent<LampkeeperBoss>();
+        if (lampkeeperBoss != null)
+        {
+            lampkeeperBoss.TakeDamage(damage);
+            Destroy(gameObject);
+            return;
+        }
+
         if (other.CompareTag("Ground"))
         { 
             Destroy(gameObject);
