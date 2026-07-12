@@ -531,8 +531,17 @@ public class SkeletonBoss : MonoBehaviour
         animator.SetBool(IsDeadHash, true);
         Debug.Log("Skeleton Boss has been defeated!");
 
-        // Destroy the boss game object after 2 seconds (to let death animation play)
-        Destroy(gameObject, 2f);
+        // Nếu có hội thoại cốt truyện sau khi boss chết thì để nó lo trình tự (thoại -> mờ dần -> hủy)
+        BossDefeatDialogue defeatDialogue = GetComponent<BossDefeatDialogue>();
+        if (defeatDialogue != null)
+        {
+            defeatDialogue.Play();
+        }
+        else
+        {
+            // Destroy the boss game object after 2 seconds (to let death animation play)
+            Destroy(gameObject, 2f);
+        }
 
         // Disable script to stop update loops
         this.enabled = false;

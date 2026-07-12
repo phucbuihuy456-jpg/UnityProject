@@ -519,7 +519,13 @@ public class LampkeeperBoss : MonoBehaviour
         // Nối cutscene lantern-shatter reveal tại đây (gán trong Inspector)
         onDeathAnimationComplete?.Invoke();
 
-        if (destroyAfterDeath)
+        // Nếu có hội thoại cốt truyện thì để nó lo phần còn lại (thoại -> mờ dần -> hủy)
+        BossDefeatDialogue defeatDialogue = GetComponent<BossDefeatDialogue>();
+        if (defeatDialogue != null)
+        {
+            defeatDialogue.Play();
+        }
+        else if (destroyAfterDeath)
         {
             Destroy(gameObject, 2f);
         }
