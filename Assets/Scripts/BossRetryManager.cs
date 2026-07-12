@@ -21,13 +21,27 @@ public class BossRetryManager : MonoBehaviour
     [Header("References (để trống sẽ tự tìm khi vào scene)")]
     [SerializeField] private HealthManager playerHealth;
     [SerializeField] private LampkeeperBoss boss;
+    [SerializeField] private VampireLordBoss vampireBoss;
     [SerializeField] private BossRoomTrigger bossRoomTrigger;
+    [SerializeField] private BossRoomTrigger vampireRoomTrigger;
     [SerializeField] private GameObject deathPanel;
     [SerializeField] private Button restartButton;
 
     [Header("Respawn")]
-    [Tooltip("Điểm hồi sinh — mặc định là cửa vào Phòng 5")]
+    [Tooltip("Điểm hồi sinh cho trận Lampkeeper — mặc định là cửa vào Phòng 5")]
     [SerializeField] private Vector2 respawnPoint = new Vector2(43.5f, 22.5f);
+
+    [Tooltip("Điểm hồi sinh khi chết ở các tầng trên (Phòng 6-9) — cửa vào phòng Checkpoint")]
+    [SerializeField] private Vector2 checkpointRespawnPoint = new Vector2(-6.5f, 70.5f);
+
+    [Tooltip("Điểm hồi sinh cho trận boss cuối — cửa vào Phòng Ngai Vàng")]
+    [SerializeField] private Vector2 vampireRespawnPoint = new Vector2(-6.5f, 142.5f);
+
+    [Tooltip("Chết ở độ cao y lớn hơn ngưỡng này = đang đánh boss cuối")]
+    [SerializeField] private float vampireZoneMinY = 135f;
+
+    [Tooltip("Chết ở độ cao y lớn hơn ngưỡng này (nhưng dưới vùng boss cuối) = hồi sinh ở Checkpoint")]
+    [SerializeField] private float checkpointZoneMinY = 66f;
 
     // --- BOOTSTRAP: tự sinh khi vào Level 2, không phụ thuộc scene file ---
 
@@ -80,8 +94,26 @@ public class BossRetryManager : MonoBehaviour
             playerHealth = FindAnyObjectByType<HealthManager>();
         if (boss == null)
             boss = FindAnyObjectByType<LampkeeperBoss>();
-        if (bossRoomTrigger == null)
-            bossRoomTrigger = FindAnyObjectByType<BossRoomTrigger>();
+        if (vampireBoss == null)
+            vampireBoss = FindAnyObjectByType<VampireLordBoss>();
+
+        // Scene có 2 trigger phòng boss — phân biệt theo tên GameObject
+        if (bossRoomTrigger == null || vampireRoomTrigger == null)
+        {
+            foreach (var trigger in FindObjectsByType<BossRoomTrigger>(FindObjectsSortMode.None))
+            {
+                if (trigger.name.Contains("NgaiVang"))
+                {
+                    if (vampireRoomTrigger == null)
+                        vampireRoomTrigger = trigger;
+                }
+                else if (bossRoomTrigger == null)
+                {
+                    bossRoomTrigger = trigger;
+                }
+            }
+        }
+
         if (deathPanel == null && playerHealth != null)
             deathPanel = playerHealth.deathPanel;
     }
@@ -134,7 +166,7 @@ public class BossRetryManager : MonoBehaviour
         {
             Transform playerTransform = playerHealth.transform;
             Vector3 oldPos = playerTransform.position;
-            playerTransform.position = respawnPoint;
+            playerTransform.position = PickRespawnPoint(oldPos.y);
 
             Rigidbody2D playerRb = playerHealth.GetComponent<Rigidbody2D>();
             if (playerRb != null)
@@ -151,14 +183,36 @@ public class BossRetryManager : MonoBehaviour
             );
         }
 
-        if (boss != null)
+        // Chỉ reset boss còn sống — reset boss đã chết sẽ hồi sinh nó và khóa cửa lại
+        if (boss != null && boss.CurrentHealth > 0)
         {
             boss.ResetBoss();
+            if (bossRoomTrigger != null)
+            {
+                bossRoomTrigger.ResetTrigger();
+            }
         }
 
-        if (bossRoomTrigger != null)
+        if (vampireBoss != null && vampireBoss.CurrentHealth > 0)
         {
-            bossRoomTrigger.ResetTrigger();
+            vampireBoss.ResetBoss();
+            if (vampireRoomTrigger != null)
+            {
+                vampireRoomTrigger.ResetTrigger();
+            }
         }
+    }
+
+    /// <summary>
+    /// Chọn điểm hồi sinh theo độ cao lúc chết: tầng ngai vàng -> cửa Phòng Ngai Vàng,
+    /// các tầng trên Checkpoint -> cửa Checkpoint, còn lại -> cửa Phòng 5 (trước Boss 1).
+    /// </summary>
+    private Vector2 PickRespawnPoint(float deathY)
+    {
+        if (deathY >= vampireZoneMinY)
+            return vampireRespawnPoint;
+        if (deathY >= checkpointZoneMinY)
+            return checkpointRespawnPoint;
+        return respawnPoint;
     }
 }

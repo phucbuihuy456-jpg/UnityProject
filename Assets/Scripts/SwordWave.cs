@@ -69,6 +69,14 @@ public class SwordWave : MonoBehaviour
             return;
         }
 
+        VampireLordBoss vampireLordBoss = other.GetComponent<VampireLordBoss>();
+        if (vampireLordBoss != null)
+        {
+            vampireLordBoss.TakeDamage(damage);
+            Destroy(gameObject);
+            return;
+        }
+
         if (other.CompareTag("Ground"))
         { 
             Destroy(gameObject);

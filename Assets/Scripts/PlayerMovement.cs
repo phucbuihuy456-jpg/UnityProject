@@ -374,6 +374,20 @@ public class PlayerMovement : MonoBehaviour
             {
                 skeletonBoss.TakeDamage(attackDamage);
             }
+
+            // Gây sát thương nếu đối tượng là LampkeeperBoss (Boss Level 2)
+            LampkeeperBoss lampkeeperBoss = enemy.GetComponent<LampkeeperBoss>();
+            if (lampkeeperBoss != null)
+            {
+                lampkeeperBoss.TakeDamage(attackDamage);
+            }
+
+            // Gây sát thương nếu đối tượng là VampireLordBoss (Boss cuối - Phòng Ngai Vàng)
+            VampireLordBoss vampireLordBoss = enemy.GetComponent<VampireLordBoss>();
+            if (vampireLordBoss != null)
+            {
+                vampireLordBoss.TakeDamage(attackDamage);
+            }
         }
     }
 
