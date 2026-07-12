@@ -578,7 +578,13 @@ public class VampireLordBoss : MonoBehaviour
 
         onDeathAnimationComplete?.Invoke();
 
-        if (destroyAfterDeath)
+        // Hội thoại kết màn + chọn ending (nếu có gắn component)
+        VampireLordEndingDialogue endingDialogue = GetComponent<VampireLordEndingDialogue>();
+        if (endingDialogue != null)
+        {
+            endingDialogue.Play();
+        }
+        else if (destroyAfterDeath)
         {
             Destroy(gameObject, 2f);
         }
