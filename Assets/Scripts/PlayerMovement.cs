@@ -61,12 +61,6 @@ public class PlayerMovement : MonoBehaviour
     private bool canSpecial = true;
     private bool isSpecialAttacking = false;
 
-    // BIẾN MỚI: Dùng để tính toán thời gian hồi chiêu
-    private float currentCooldownTimer = 0f;
-
-    // BIẾN MỚI: Tính sẵn % (từ 0 đến 1) để UI bên ngoài có thể đọc được dễ dàng
-    public float CooldownPercentage => canSpecial ? 1f : (currentCooldownTimer / specialCooldown);
-
     [Header("Footstep")]
     public AudioClip footstepSound;
 
@@ -185,17 +179,9 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator SpecialCooldown()
     {
-        currentCooldownTimer = 0f; // Bắt đầu đếm từ 0
+        yield return new WaitForSeconds(specialCooldown);
 
-        // Tăng dần thời gian cho đến khi đạt mức cooldown tối đa
-        while (currentCooldownTimer < specialCooldown)
-        {
-            currentCooldownTimer += Time.deltaTime;
-            yield return null;
-        }
-
-        currentCooldownTimer = specialCooldown; // Đảm bảo số không bị vượt lố
-        canSpecial = true; // Sẵn sàng tung chiêu lần nữa
+        canSpecial = true;
     }
 
     public void SpawnSwordWave()
