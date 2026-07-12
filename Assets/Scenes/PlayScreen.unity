@@ -21522,6 +21522,8 @@ MonoBehaviour:
   moveSpeed: 3.5
   jumpForce: 6.5
   maxJump: 2
+  slideSpeed: 8
+  slideTime: 0.4
   groundCheck: {fileID: 986584728}
   groundLayer:
     serializedVersion: 2

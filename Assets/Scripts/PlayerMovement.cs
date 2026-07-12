@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -13,6 +14,13 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 3.5f;
     public float jumpForce = 3f;
     public int maxJump = 2;
+
+    [Header("Slide")]
+    public float slideSpeed = 8f;
+    public float slideTime = 0.4f;
+
+    private bool isSliding = false;
+    
 
     [Header("Ground Check")]
     public Transform groundCheck;
@@ -92,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Đọc input
         moveInput = 0f;
+        
 
         if (Input.GetKey(KeyCode.D))
         {
@@ -119,7 +128,50 @@ public class PlayerMovement : MonoBehaviour
         if (!isAttacking && !isSpecialAttacking)
         {
             HandleJump();
+            HandleSlide();
         }
+    }
+
+    private void HandleSlide()
+    {
+        if (Input.GetKeyDown(KeyCode.L)
+                    && !isSliding
+                    && !isAttacking
+                    && !isSpecialAttacking
+                    )
+        {
+            isSliding = true;
+            StartCoroutine(Slide());
+        }
+    }
+
+    private IEnumerator Slide()
+    {
+        animator.SetBool("isMoving", false);
+        animator.SetTrigger("Dash");
+
+        float direction = spriteRenderer.flipX ? -1f : 1f;
+
+        float timer = 0f;
+
+        float currentSpeed = slideSpeed;
+
+        while (timer < slideTime)
+        {
+            rb.linearVelocity = new Vector2(direction * currentSpeed, rb.linearVelocity.y);
+
+            currentSpeed = Mathf.Lerp(slideSpeed, 0f, timer / slideTime);
+
+            timer += Time.deltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        isSliding = false;
+    }
+
+    public void FinishSlide()
+    {
+        isSliding = false;
     }
 
     // Gọi từ NPCInteract để khóa/mở di chuyển khi nói chuyện
@@ -212,6 +264,12 @@ public class PlayerMovement : MonoBehaviour
         if (isSpecialAttacking)
         {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            return;
+        }
+
+        if (isSliding)
+        {
+            rb.gravityScale = defaultGravity;
             return;
         }
 
