@@ -511,6 +511,81 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb9e35862cc918d48aecb2bc82405689, type: 3}
+--- !u!1 &306252617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 306252618}
+  - component: {fileID: 306252620}
+  - component: {fileID: 306252619}
+  m_Layer: 5
+  m_Name: PowerFull
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &306252618
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306252617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 483065490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 172, y: 27}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &306252619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306252617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -6278947526542542549, guid: f974eb0fc6b3d0d4da24298f2a0dd0cd, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &306252620
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306252617}
+  m_CullTransparentMesh: 1
 --- !u!1001 &349856021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -568,6 +643,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb9e35862cc918d48aecb2bc82405689, type: 3}
+--- !u!224 &359673671 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8112622394533652438, guid: 8387a3b3092225a488512052bde01521, type: 3}
+  m_PrefabInstance: {fileID: 618639588}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &363964794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90888,6 +90968,82 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb9e35862cc918d48aecb2bc82405689, type: 3}
+--- !u!1 &483065489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 483065490}
+  - component: {fileID: 483065492}
+  - component: {fileID: 483065491}
+  m_Layer: 5
+  m_Name: PowerEmpty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &483065490
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483065489}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 306252618}
+  m_Father: {fileID: 1589271740}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 172, y: 27}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &483065491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483065489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 4024241011842286021, guid: f974eb0fc6b3d0d4da24298f2a0dd0cd, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &483065492
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483065489}
+  m_CullTransparentMesh: 1
 --- !u!1 &598248723
 GameObject:
   m_ObjectHideFlags: 0
@@ -91150,6 +91306,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1639489584654220634, guid: 8387a3b3092225a488512052bde01521, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1470000031}
+    - targetCorrespondingSourceObject: {fileID: 8112622394533652438, guid: 8387a3b3092225a488512052bde01521, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1589271740}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8387a3b3092225a488512052bde01521, type: 3}
 --- !u!224 &618639589 stripped
@@ -114337,6 +114496,81 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb9e35862cc918d48aecb2bc82405689, type: 3}
+--- !u!1 &1357435488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1357435489}
+  - component: {fileID: 1357435491}
+  - component: {fileID: 1357435490}
+  m_Layer: 5
+  m_Name: PowerShadow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1357435489
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357435488}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1589271740}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: -5}
+  m_SizeDelta: {x: 172, y: 27}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1357435490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357435488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -9189376666486724237, guid: f974eb0fc6b3d0d4da24298f2a0dd0cd, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1357435491
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357435488}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1379959214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117680,29 +117914,50 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bf9905ec63646169d3d185b1b364e38, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossDefeatDialogue
   dialogue:
-  - speaker: "Kẻ Giữ Đ\xE8n"
-    text: "Khụ... khụ... Ch\xE1u y\xEAu... đ\xF4i tay ấy... vẫn ấm như c\xE1i đ\xEAm b\xE0 bế ch\xE1u rời khỏi nơi n\xE0y..."
+  - speaker: "K\u1EBB Gi\u1EEF \u0110\xE8n"
+    text: "Kh\u1EE5... kh\u1EE5... Ch\xE1u y\xEAu... \u0111\xF4i tay \u1EA5y... v\u1EABn
+      \u1EA5m nh\u01B0 c\xE1i \u0111\xEAm b\xE0 b\u1EBF ch\xE1u r\u1EDDi kh\u1ECFi
+      n\u01A1i n\xE0y..."
   - speaker: Elara
-    text: "Đừng gọi ta như vậy! Suốt trận đ\xE1nh ngươi cứ gọi ta bằng c\xE1i t\xEAn ta chưa từng nghe. Rốt cuộc ngươi l\xE0 ai?"
-  - speaker: "Kẻ Giữ Đ\xE8n"
-    text: "Chiếc đ\xE8n... vỡ mất rồi... Ch\xE1u tự nh\xECn đi... B\xEAn trong n\xF3... chưa bao giờ l\xE0 lửa..."
+    text: "\u0110\u1EEBng g\u1ECDi ta nh\u01B0 v\u1EADy! Su\u1ED1t tr\u1EADn \u0111\xE1nh
+      ng\u01B0\u01A1i c\u1EE9 g\u1ECDi ta b\u1EB1ng c\xE1i t\xEAn ta ch\u01B0a t\u1EEBng
+      nghe. R\u1ED1t cu\u1ED9c ng\u01B0\u01A1i l\xE0 ai?"
+  - speaker: "K\u1EBB Gi\u1EEF \u0110\xE8n"
+    text: "Chi\u1EBFc \u0111\xE8n... v\u1EE1 m\u1EA5t r\u1ED3i... Ch\xE1u t\u1EF1
+      nh\xECn \u0111i... B\xEAn trong n\xF3... ch\u01B0a bao gi\u1EDD l\xE0 l\u1EEDa..."
   - speaker: Elara
-    text: "Một bức ảnh...? Đứa b\xE9 trong ảnh n\xE0y... Tại sao... tại sao n\xF3 c\xF3 gương mặt của ta?!"
-  - speaker: "Kẻ Giữ Đ\xE8n"
-    text: "Mặt sau bức ảnh... c\xF3 d\xF2ng chữ b\xE0 khắc năm 2003... 'Để b\xE0 tự đốt m\xECnh trong b\xF3ng tối, miễn l\xE0 ch\xE1u được sống.'... Đ\xEAm đ\xF3 ch\xE1u mới bốn tuổi... Vesper \xE0."
+    text: "M\u1ED9t b\u1EE9c \u1EA3nh...? \u0110\u1EE9a b\xE9 trong \u1EA3nh n\xE0y...
+      T\u1EA1i sao... t\u1EA1i sao n\xF3 c\xF3 g\u01B0\u01A1ng m\u1EB7t c\u1EE7a
+      ta?!"
+  - speaker: "K\u1EBB Gi\u1EEF \u0110\xE8n"
+    text: "M\u1EB7t sau b\u1EE9c \u1EA3nh... c\xF3 d\xF2ng ch\u1EEF b\xE0 kh\u1EAFc
+      n\u0103m 2003... '\u0110\u1EC3 b\xE0 t\u1EF1 \u0111\u1ED1t m\xECnh trong b\xF3ng
+      t\u1ED1i, mi\u1EC5n l\xE0 ch\xE1u \u0111\u01B0\u1EE3c s\u1ED1ng.'... \u0110\xEAm
+      \u0111\xF3 ch\xE1u m\u1EDBi b\u1ED1n tu\u1ED5i... Vesper \xE0."
   - speaker: Elara
-    text: "Vesper...? Kh\xF4ng thể n\xE0o... Vesper l\xE0 t\xEAn của c\xE2y nến..."
-  - speaker: "Vesper Wickwood"
-    text: "C\xE2y nến mang t\xEAn ch\xE1u đấy, ch\xE1u y\xEAu... Ta l\xE0 Vesper Wickwood — b\xE0 nội của ch\xE1u. C\xF2n l\xE2u đ\xE0i n\xE0y... l\xE0 nơi ch\xE1u sinh ra."
+    text: "Vesper...? Kh\xF4ng th\u1EC3 n\xE0o... Vesper l\xE0 t\xEAn c\u1EE7a c\xE2y
+      n\u1EBFn..."
+  - speaker: Vesper Wickwood
+    text: "C\xE2y n\u1EBFn mang t\xEAn ch\xE1u \u0111\u1EA5y, ch\xE1u y\xEAu... Ta
+      l\xE0 Vesper Wickwood \u2014 b\xE0 n\u1ED9i c\u1EE7a ch\xE1u. C\xF2n l\xE2u
+      \u0111\xE0i n\xE0y... l\xE0 n\u01A1i ch\xE1u sinh ra."
   - speaker: Elara
-    text: "N\xF3i dối! Hội bảo cha mẹ ta chết v\xEC tai nạn! Ta l\xE0 thợ săn của Hội Canh Giữ, ta đến đ\xE2y để chấm dứt lời nguyền!"
-  - speaker: "Vesper Wickwood"
-    text: "Hội Canh Giữ kh\xF4ng cứu thế giới đ\xE2u, ch\xE1u \xE0... Họ đưa ch\xE1u về đ\xFAng c\xE1i nơi b\xE0 đ\xE3 đ\xE1nh đổi tất cả để ch\xE1u trốn tho\xE1t... Đi tiếp đi... nhưng khi '\xF4ng ấy' gọi ch\xE1u bằng họ Wickwood... đừng tin... bất cứ... lời n\xE0o..."
+    text: "N\xF3i d\u1ED1i! H\u1ED9i b\u1EA3o cha m\u1EB9 ta ch\u1EBFt v\xEC tai
+      n\u1EA1n! Ta l\xE0 th\u1EE3 s\u0103n c\u1EE7a H\u1ED9i Canh Gi\u1EEF, ta \u0111\u1EBFn
+      \u0111\xE2y \u0111\u1EC3 ch\u1EA5m d\u1EE9t l\u1EDDi nguy\u1EC1n!"
+  - speaker: Vesper Wickwood
+    text: "H\u1ED9i Canh Gi\u1EEF kh\xF4ng c\u1EE9u th\u1EBF gi\u1EDBi \u0111\xE2u,
+      ch\xE1u \xE0... H\u1ECD \u0111\u01B0a ch\xE1u v\u1EC1 \u0111\xFAng c\xE1i n\u01A1i
+      b\xE0 \u0111\xE3 \u0111\xE1nh \u0111\u1ED5i t\u1EA5t c\u1EA3 \u0111\u1EC3 ch\xE1u
+      tr\u1ED1n tho\xE1t... \u0110i ti\u1EBFp \u0111i... nh\u01B0ng khi '\xF4ng \u1EA5y'
+      g\u1ECDi ch\xE1u b\u1EB1ng h\u1ECD Wickwood... \u0111\u1EEBng tin... b\u1EA5t
+      c\u1EE9... l\u1EDDi n\xE0o..."
   - speaker: Elara
-    text: "B\xE0 ơi—khoan đ\xE3!... Tại sao... ta kh\xF4ng kh\xF3c được... Tại sao ta kh\xF4ng thể kh\xF3c?"
+    text: "B\xE0 \u01A1i\u2014khoan \u0111\xE3!... T\u1EA1i sao... ta kh\xF4ng kh\xF3c
+      \u0111\u01B0\u1EE3c... T\u1EA1i sao ta kh\xF4ng th\u1EC3 kh\xF3c?"
   startDelay: 0.4
   typeSpeed: 0.04
   fadeOutDuration: 2
@@ -118130,8 +118385,123 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca64af6519b64d989271885b18a097fd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VampireLordEndingDialogue
+  introDialogue:
+  - speaker: Lord Wickwood
+    text: "Kh\u1EE5... Tuy\u1EC7t v\u1EDDi... tuy\u1EC7t v\u1EDDi l\u1EAFm, ch\xE1u
+      y\xEAu c\u1EE7a ta... N\u0103m tr\u0103m n\u0103m r\u1ED3i... d\xF2ng m\xE1u
+      Wickwood ch\u01B0a bao gi\u1EDD ch\u1EA3y m\u1EA1nh m\u1EBD \u0111\u1EBFn th\u1EBF..."
+  - speaker: Elara
+    text: "\u0110\u1EE7 r\u1ED3i, Albrecht Wickwood! Ng\u01B0\u01A1i \u0111\xE3 nu\u1ED1t
+      ch\u1EEDng b\u1EA3y cu\u1ED9c \u0111\u1EDDi. B\u1EA3y ng\u01B0\u1EDDi con g\xE1i
+      c\u1EE7a ch\xEDnh d\xF2ng h\u1ECD ng\u01B0\u01A1i. H\xF4m nay, m\u1ECDi chuy\u1EC7n
+      k\u1EBFt th\xFAc."
+  - speaker: Lord Wickwood
+    text: "K\u1EBFt th\xFAc...? Ch\xE1u v\u1EABn ch\u01B0a hi\u1EC3u sao? C\xE2y
+      n\u1EBFn ch\xE1u c\u1EA7m ch\u01B0a bao gi\u1EDD l\xE0 v\u0169 kh\xED... N\xF3
+      l\xE0 CH\xCCA KH\xD3A. M\u1ED7i th\u1EE3 s\u0103n tr\u1EDF v\u1EC1, m\u1ED7i
+      ng\u1ECDn n\u1EBFn ch\xE1y h\u1EBFt... ta l\u1EA1i m\u1EA1nh th\xEAm m\u1ED9t
+      ch\xFAt."
+  - speaker: Lord Wickwood
+    text: "H\u1ED9i Canh Gi\u1EEF kh\xF4ng c\u1EED ch\xE1u \u0111\u1EBFn \u0111\u1EC3
+      gi\u1EBFt ta... Ch\xFAng MANG CH\xC1U V\u1EC0 cho ta. Nh\u01B0 \u0111\xE3 mang
+      v\u1EC1 b\u1EA3y \u0111\u1EE9a tr\u01B0\u1EDBc. Ch\xFAng nu\xF4i ch\xE1u, d\u1EA1y
+      ch\xE1u, r\u1ED3i d\xE2ng ch\xE1u \u2014 \u0111\xFAng n\u0103m ch\xE1u hai
+      m\u01B0\u01A1i ba tu\u1ED5i."
+  - speaker: Lord Wickwood
+    text: "Nh\xECn ta n\xE0y, Vesper Wickwood... Ta \u0111ang qu\u1EF3 tr\u01B0\u1EDBc
+      ch\xE1u \u0111\xE2y. Ngai v\xE0ng, l\xE2u \u0111\xE0i, s\u1EF1 b\u1EA5t t\u1EED
+      \u2014 t\u1EA5t c\u1EA3 l\xE0 c\u1EE7a ch\xE1u. Ch\xE1u ch\u1EC9 c\u1EA7n...
+      \u0111\u01B0a ng\u1ECDn n\u1EBFn v\u1EC1 ngu\u1ED3n c\u1EE7a n\xF3."
+  choicePrompt: "Elara s\u1EBD tr\u1EA3 l\u1EDDi th\u1EBF n\xE0o?"
+  choices:
+  - choiceText: "D\xF2ng h\u1ECD Wickwood k\u1EBFt th\xFAc t\u1EA1i \u0111\xE2y \u2014
+      b\u1EB1ng ng\u1ECDn l\u1EEDa cu\u1ED1i c\xF9ng c\u1EE7a n\xF3."
+    epilogue:
+    - speaker: Elara
+      text: "B\xE0 n\u1ED9i \u0111\xE3 t\u1EF1 \u0111\u1ED1t m\xECnh trong b\xF3ng
+        t\u1ED1i \u0111\u1EC3 ta \u0111\u01B0\u1EE3c s\u1ED1ng. Gi\u1EDD ta m\u1EDBi
+        hi\u1EC3u... \xC1nh s\xE1ng kh\xF4ng ph\u1EA3i th\u1EE9 \u0111\u1EC3 gi\u1EEF
+        l\u1EA5y. N\xF3 l\xE0 th\u1EE9 \u0111\u1EC3 trao \u0111i."
+    - speaker: Lord Wickwood
+      text: "Khoan... ch\xE1u \u0111\u1ECBnh l\xE0m g\xEC...? D\u1EEANG L\u1EA0I!
+        Ch\xE1u l\xE0 T\xC0I S\u1EA2N c\u1EE7a ta! Ch\xE1u ch\xEDnh l\xE0 TA!"
+    - speaker: Elara
+      text: "Kh\xF4ng. Ta l\xE0 \xE1nh s\xE1ng cu\u1ED1i c\xF9ng c\u1EE7a d\xF2ng
+        h\u1ECD Wickwood. V\xE0 \xE1nh s\xE1ng n\xE0y... kh\xF4ng thu\u1ED9c v\u1EC1
+        ng\u01B0\u01A1i."
+    endingTitle: "\xC1NH S\xC1NG"
+    endingNarration: "Elara \xE1p C\xE2y N\u1EBFn Vesper v\xE0o ng\u1EF1c m\xECnh.
+      Ng\u1ECDn l\u1EEDa lan ra \u2014 tr\u1EAFng x\xF3a, \u1EA5m \xE1p, kh\xF4ng
+      h\u1EC1 \u0111au \u0111\u1EDBn.\n\nLord Wickwood g\xE0o l\xEAn r\u1ED3i tan
+      th\xE0nh tro b\u1EE5i. M\u1ED9t tr\u0103m ng\u1ECDn ma tr\u01A1i bay ra kh\u1ECFi
+      l\xE2u \u0111\xE0i, h\u01B0\u1EDBng v\u1EC1 b\u1EA7u tr\u1EDDi nh\u01B0 m\u1ED9t
+      d\xF2ng sao b\u0103ng ng\u01B0\u1EE3c. Trong \xE1nh ban mai \u0111\u1EA7u ti\xEAn
+      sau n\u0103m tr\u0103m n\u0103m, l\xE2u \u0111\xE0i Wickwood s\u1EE5p \u0111\u1ED5.\n\nTr\xEAn
+      bia m\u1ED9 th\u1EE9 t\xE1m trong tu vi\u1EC7n, c\xF3 d\xF2ng ch\u1EEF m\u1EDBi:\n\n\"Elara
+      Vespera Wickwood.\nNg\u01B0\u1EDDi cu\u1ED1i c\xF9ng c\u1EE7a d\xF2ng h\u1ECD.\nNg\u01B0\u1EDDi
+      \u0111\u1EA7u ti\xEAn ch\u1ECDn \xE1nh s\xE1ng.\""
+    onChosen:
+      m_PersistentCalls:
+        m_Calls: []
+  - choiceText: "Ngai v\xE0ng \u0111\xF3 l\xE0 c\u1EE7a ta. Ta l\xE0 Vesper Wickwood."
+    epilogue:
+    - speaker: Elara
+      text: "N\u0103m tr\u0103m n\u0103m... t\xE1m th\u1EBF h\u1EC7... Ng\u01B0\u01A1i
+        n\xF3i \u0111\xFAng m\u1ED9t \u0111i\u1EC1u, Albrecht: kh\xF4ng ai tr\u1ED1n
+        \u0111\u01B0\u1EE3c c\u1ED9i ngu\u1ED3n c\u1EE7a m\xECnh."
+    - speaker: Lord Wickwood
+      text: "\u0110\xFAng v\u1EADy... \u0111\xFAng v\u1EADy... V\u1EC1 nh\xE0 \u0111i,
+        ch\xE1u y\xEAu c\u1EE7a ta..."
+    - speaker: Elara
+      text: "Nh\u01B0ng ng\u01B0\u01A1i nh\u1EA7m m\u1ED9t \u0111i\u1EC1u. Ngai v\xE0ng
+        n\xE0y kh\xF4ng ph\u1EA3i ng\u01B0\u01A1i ban cho ta... N\xF3 l\xE0 C\u1EE6A
+        TA. V\xE0 k\u1EBB \u0111\u1EA7u ti\xEAn b\xF3ng t\u1ED1i n\xE0y nu\u1ED1t
+        ch\u1EEDng \u2014 ch\xEDnh l\xE0 ng\u01B0\u01A1i."
+    endingTitle: "B\xD3NG T\u1ED0I"
+    endingNarration: "Elara ng\u1ED3i l\xEAn ngai v\xE0ng. C\xE2y N\u1EBFn Vesper
+      b\xF9ng ch\xE1y m\xE3nh li\u1EC7t h\u01A1n bao gi\u1EDD h\u1EBFt \u2014 v\xE0
+      b\xF3ng t\u1ED1i qu\u1EF3 xu\u1ED1ng d\u01B0\u1EDBi ch\xE2n n\xF3.\n\n\u1EDE
+      m\u1ED9t n\u01A1i r\u1EA5t xa, m\u1ED9t b\xE9 g\xE1i v\u1EEBa ch\xE0o \u0111\u1EDDi
+      trong m\u1ED9t gia \u0111\xECnh b\xECnh th\u01B0\u1EDDng \u2014 mang trong
+      m\xECnh d\xF2ng m\xE1u Wickwood m\xE0 kh\xF4ng ai hay bi\u1EBFt.\n\nTrong gi\u1EA5c
+      ng\u1EE7 \u0111\u1EA7u ti\xEAn c\u1EE7a em, c\xF3 ti\u1EBFng th\xEC th\u1EA7m:\n\n\"H\u1EB9n
+      g\u1EB7p l\u1EA1i sau 70 n\u0103m, ch\xE1u y\xEAu.\""
+    onChosen:
+      m_PersistentCalls:
+        m_Calls: []
+  - choiceText: "Ta kh\xF4ng gi\u1EBFt ng\u01B0\u01A1i. Ta c\u0169ng kh\xF4ng nh\u1EADn
+      ngai v\xE0ng. Ta s\u1EBD \u1EDF l\u1EA1i \u2014 canh gi\u1EEF n\u01A1i n\xE0y,
+      m\xE3i m\xE3i."
+    epilogue:
+    - speaker: Lord Wickwood
+      text: "C\xE1i g\xEC...? Kh\xF4ng gi\u1EBFt... c\u0169ng kh\xF4ng nh\u1EADn
+        l\u1EA5y...? KH\xD4NG AI \u0111\u01B0\u1EE3c ph\xE9p t\u1EEB ch\u1ED1i d\xF2ng
+        m\xE1u Wickwood!"
+    - speaker: Elara
+      text: "M\u1ED9t tr\u0103m \u0111\u1EE9a tr\u1EBB ng\u01B0\u01A1i \u0111\xE3
+        d\xE2ng \u0111i \u2014 ta \u0111\xE3 nh\u1EB7t t\u1EEBng ng\u1ECDn l\u1EEDa,
+        \u0111\u01B0a t\u1EEBng \u0111\u1EE9a v\u1EC1 v\u1EDBi \xE1nh s\xE1ng. Ch\xFAng
+        d\u1EA1y ta \u0111i\u1EC1u ng\u01B0\u01A1i kh\xF4ng bao gi\u1EDD hi\u1EC3u:
+        b\xF3ng t\u1ED1i kh\xF4ng c\u1EA7n b\u1ECB ti\xEAu di\u1EC7t. N\xF3 ch\u1EC9
+        c\u1EA7n \u0111\u01B0\u1EE3c th\u1EAFp s\xE1ng."
+    - speaker: Elara
+      text: "N\u1EBFu \xE1nh s\xE1ng c\u1EA7n m\u1ED9t ng\u01B0\u1EDDi canh gi\u1EEF,
+        th\xEC ng\u01B0\u1EDDi \u0111\xF3 l\xE0 ta. Kh\xF4ng ai kh\xE1c n\u1EEFa
+        ph\u1EA3i \u0111\u1EBFn \u0111\xE2y."
+    endingTitle: "NG\u01AF\u1EDCI CANH GI\u1EEE"
+    endingNarration: "Elara \u1EDF l\u1EA1i. Kh\xF4ng ph\u1EA3i t\xF9 nh\xE2n \u2014
+      m\xE0 l\xE0 Ng\u01B0\u1EDDi Gi\u1EEF S\xE1ng m\u1EDBi c\u1EE7a Wickwood Manor.\n\nTrong
+      s\u1EA3nh ch\xEDnh, c\xF4 ng\u1ED3i gi\u1EEFa m\u1ED9t tr\u0103m ng\u1ECDn
+      ma tr\u01A1i nh\u1ECF bay quanh nh\u01B0 sao tr\u1EDDi. C\xE2y n\u1EBFn ch\xE1y
+      b\xECnh y\xEAn. C\xF4 kh\u1EBD h\xE1t b\xE0i h\xE1t ru b\u1EB1ng th\u1EE9 ng\xF4n
+      ng\u1EEF c\xF4 ch\u01B0a t\u1EEBng \u0111\u01B0\u1EE3c h\u1ECDc \u2014 ng\xF4n
+      ng\u1EEF c\u1EE7a t\u1ED5 ti\xEAn.\n\nV\xE0 l\u1EA7n \u0111\u1EA7u ti\xEAn
+      trong \u0111\u1EDDi,\nElara kh\xF4ng c\xF2n c\xF4 \u0111\u01A1n n\u1EEFa."
+    onChosen:
+      m_PersistentCalls:
+        m_Calls: []
   secretChoiceIndex: 2
   flamesRequiredForSecret: 75
   startDelay: 0.5
@@ -118139,6 +118509,13 @@ MonoBehaviour:
   mainMenuSceneName: MenuScreen
   typingSound: {fileID: 8300000, guid: a1c2e3f40b5d4a6c8e9f0a1b2c3d4e5f, type: 3}
   voiceVolume: 0.7
+  nameFontSize: 28
+  dialogueFontSize: 32
+  textColor: {r: 1, g: 1, b: 1, a: 1}
+  nameColor: {r: 1, g: 0.85, b: 0.4, a: 1}
+  choiceNormalColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
+  choiceSelectedColor: {r: 1, g: 0.9, b: 0.45, a: 1}
+  secretChoiceColor: {r: 0.55, g: 0.9, b: 1, a: 1}
 --- !u!1 &1470000020
 GameObject:
   m_ObjectHideFlags: 0
@@ -119190,6 +119567,59 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb9e35862cc918d48aecb2bc82405689, type: 3}
+--- !u!1 &1589271739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1589271740}
+  - component: {fileID: 1589271741}
+  m_Layer: 5
+  m_Name: PowerBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1589271740
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589271739}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1357435489}
+  - {fileID: 483065490}
+  m_Father: {fileID: 359673671}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -63.6, y: -32.5}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1589271741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589271739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 527f9d752a5e89d42a0e1c3bed703465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillCooldownBar
+  player: {fileID: 1107110712}
+  emptyCooldownImage: {fileID: 483065491}
+  fullCooldownImage: {fileID: 306252619}
 --- !u!1 &1717091623
 GameObject:
   m_ObjectHideFlags: 0
