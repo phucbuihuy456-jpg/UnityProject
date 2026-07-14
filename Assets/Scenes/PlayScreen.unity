@@ -2174,54 +2174,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &723186593
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 723186594}
-  - component: {fileID: 723186595}
-  m_Layer: 0
-  m_Name: DungeonDoor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &723186594
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 723186593}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 124.99, y: -9.16, z: 0}
-  m_LocalScale: {x: 5, y: 4, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &723186595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 723186593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7c4e2f019b8d4e3aa5f1c6b8d2e0f47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetScene: Level1
-  interactKey: 101
-  interactRadius: 2.5
-  prompt: {fileID: 723186600}
 --- !u!1 &723186600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3417489862010302622, guid: 8387a3b3092225a488512052bde01521, type: 3}
@@ -29683,6 +29635,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1174160793816494003, guid: 8387a3b3092225a488512052bde01521, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1026268781}
     - target: {fileID: 1639489584654220634, guid: 8387a3b3092225a488512052bde01521, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -30145,6 +30101,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b425a1b9891d8c4faaea93da0c2253f, type: 3}
+--- !u!1001 &5345260245698192817
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 124.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626482375233050375, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: prompt
+      value: 
+      objectReference: {fileID: 723186600}
+    - target: {fileID: 9151990187155115740, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_Name
+      value: DungeonDoor
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
 --- !u!1001 &5497681458747273474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30294,7 +30311,7 @@ SceneRoots:
   - {fileID: 1931003554}
   - {fileID: 1356907170}
   - {fileID: 1068481991}
-  - {fileID: 723186594}
+  - {fileID: 5345260245698192817}
   - {fileID: 970942184}
   - {fileID: 1442321285}
   - {fileID: 1336757283}

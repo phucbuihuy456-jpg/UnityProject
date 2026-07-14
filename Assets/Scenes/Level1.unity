@@ -467,6 +467,75 @@ PrefabInstance:
       addedObject: {fileID: 1777160180}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8387a3b3092225a488512052bde01521, type: 3}
+--- !u!1001 &69373282
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5.151
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.092
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 79.35246
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 22.8521
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5063810085762729765, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626482375233050375, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: targetScene
+      value: Level 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9151990187155115740, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
+      propertyPath: m_Name
+      value: DungeonDoor
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f27f4c4be2053194f8d9e749bc42bdb0, type: 3}
 --- !u!1001 &103468346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -795,23 +864,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossDefeatDialogue
   dialogue:
   - speaker: "B\u1ED9 X\u01B0\u01A1ng"
-    text: "Khoan... \u0111\u00E3... \u00C1nh n\u1EBFn \u1EA5y... Ng\u01B0\u01A1i c\u0169ng l\u00E0 ng\u01B0\u1EDDi c\u1EE7a H\u1ED9i Canh Gi\u1EEF... ph\u1EA3i kh\u00F4ng...?"
+    text: "Khoan... \u0111\xE3... \xC1nh n\u1EBFn \u1EA5y... Ng\u01B0\u01A1i c\u0169ng
+      l\xE0 ng\u01B0\u1EDDi c\u1EE7a H\u1ED9i Canh Gi\u1EEF... ph\u1EA3i kh\xF4ng...?"
   - speaker: Elara
-    text: "T\u1EA5m huy hi\u1EC7u r\u01A1i ra t\u1EEB b\u1ED9 gi\u00E1p n\u00E0y... bi\u1EC3u t\u01B0\u1EE3ng ng\u1ECDn l\u1EEDa c\u1EE7a H\u1ED9i?! 'Brother Tobias \u2014 Hi\u1EC7p s\u0129 Canh \u0110\u00EAm, n\u0103m 1782'... Ng\u01B0\u01A1i t\u1EEBng l\u00E0 th\u1EE3 s\u0103n c\u1EE7a H\u1ED9i sao?"
-  - speaker: "Brother Tobias"
-    text: "\u0110\u00E3 t\u1EEBng... Ta \u00F4m c\u00E2y n\u1EBFn c\u1EE7a m\u00ECnh b\u01B0\u1EDBc qua c\u00E1nh c\u1ED5ng Wickwood tr\u01B0\u1EDBc ng\u01B0\u01A1i... h\u01A1n hai tr\u0103m n\u0103m. V\u00E0 ta ch\u01B0a bao gi\u1EDD... b\u01B0\u1EDBc ra."
+    text: "T\u1EA5m huy hi\u1EC7u r\u01A1i ra t\u1EEB b\u1ED9 gi\xE1p n\xE0y... bi\u1EC3u
+      t\u01B0\u1EE3ng ng\u1ECDn l\u1EEDa c\u1EE7a H\u1ED9i?! 'Brother Tobias \u2014
+      Hi\u1EC7p s\u0129 Canh \u0110\xEAm, n\u0103m 1782'... Ng\u01B0\u01A1i t\u1EEBng
+      l\xE0 th\u1EE3 s\u0103n c\u1EE7a H\u1ED9i sao?"
+  - speaker: Brother Tobias
+    text: "\u0110\xE3 t\u1EEBng... Ta \xF4m c\xE2y n\u1EBFn c\u1EE7a m\xECnh b\u01B0\u1EDBc
+      qua c\xE1nh c\u1ED5ng Wickwood tr\u01B0\u1EDBc ng\u01B0\u01A1i... h\u01A1n
+      hai tr\u0103m n\u0103m. V\xE0 ta ch\u01B0a bao gi\u1EDD... b\u01B0\u1EDBc ra."
   - speaker: Elara
-    text: "Chuy\u1EC7n g\u00EC \u0111\u00E3 x\u1EA3y ra v\u1EDBi ng\u01B0\u01A1i? T\u1EA1i sao m\u1ED9t hi\u1EC7p s\u0129 c\u1EE7a H\u1ED9i l\u1EA1i th\u00E0nh ra th\u1EBF n\u00E0y?"
-  - speaker: "Brother Tobias"
-    text: "C\u00E2y n\u1EBFn c\u1EE7a ta... n\u00F3 d\u1EABn \u0111\u01B0\u1EDDng cho ta... N\u00F3 soi v\u00E0o nh\u1EEFng \u0111\u1EE9a tr\u1EBB trong l\u00E0ng... v\u00E0 th\u00EC th\u1EA7m r\u1EB1ng ch\u00FAng l\u00E0 'c\u00E1i \u00E1c'..."
-  - speaker: "Brother Tobias"
-    text: "Ta \u0111\u00E3 gi\u1EBFt m\u01B0\u1EDDi b\u1EA3y \u0111\u1EE9a tr\u1EBB... v\u00EC ta tin tuy\u1EC7t \u0111\u1ED1i v\u00E0o \u00E1nh s\u00E1ng c\u1EE7a m\u00ECnh. Nh\u01B0ng nghe cho r\u00F5 \u0111\u00E2y, h\u1EE1i ng\u01B0\u1EDDi mang n\u1EBFn... c\u00E1i \u00E1c... ch\u00EDnh l\u00E0 ta."
+    text: "Chuy\u1EC7n g\xEC \u0111\xE3 x\u1EA3y ra v\u1EDBi ng\u01B0\u01A1i? T\u1EA1i
+      sao m\u1ED9t hi\u1EC7p s\u0129 c\u1EE7a H\u1ED9i l\u1EA1i th\xE0nh ra th\u1EBF
+      n\xE0y?"
+  - speaker: Brother Tobias
+    text: "C\xE2y n\u1EBFn c\u1EE7a ta... n\xF3 d\u1EABn \u0111\u01B0\u1EDDng cho
+      ta... N\xF3 soi v\xE0o nh\u1EEFng \u0111\u1EE9a tr\u1EBB trong l\xE0ng... v\xE0
+      th\xEC th\u1EA7m r\u1EB1ng ch\xFAng l\xE0 'c\xE1i \xE1c'..."
+  - speaker: Brother Tobias
+    text: "Ta \u0111\xE3 gi\u1EBFt m\u01B0\u1EDDi b\u1EA3y \u0111\u1EE9a tr\u1EBB...
+      v\xEC ta tin tuy\u1EC7t \u0111\u1ED1i v\xE0o \xE1nh s\xE1ng c\u1EE7a m\xECnh.
+      Nh\u01B0ng nghe cho r\xF5 \u0111\xE2y, h\u1EE1i ng\u01B0\u1EDDi mang n\u1EBFn...
+      c\xE1i \xE1c... ch\xEDnh l\xE0 ta."
   - speaker: Elara
-    text: "Kh\u00F4ng th\u1EC3 n\u00E0o... N\u1EBFn c\u1EE7a H\u1ED9i kh\u00F4ng bao gi\u1EDD n\u00F3i d\u1ED1i! \u00C1nh s\u00E1ng l\u00E0 th\u1EE9 duy nh\u1EA5t ta c\u00F3 th\u1EC3 tin!"
-  - speaker: "Brother Tobias"
-    text: "Ta c\u0169ng t\u1EEBng n\u00F3i... y h\u1EC7t nh\u01B0 v\u1EADy... H\u00E3y nh\u1EDB l\u1EA5y: trong l\u00E2u \u0111\u00E0i n\u00E0y, th\u1EE9 ph\u00E1t s\u00E1ng ch\u01B0a ch\u1EAFc \u0111\u00E3 l\u00E0 thi\u1EC7n... v\u00E0 th\u1EE9 \u1EA9n trong b\u00F3ng t\u1ED1i... ch\u01B0a ch\u1EAFc \u0111\u00E3 l\u00E0 \u00E1c..."
+    text: "Kh\xF4ng th\u1EC3 n\xE0o... N\u1EBFn c\u1EE7a H\u1ED9i kh\xF4ng bao gi\u1EDD
+      n\xF3i d\u1ED1i! \xC1nh s\xE1ng l\xE0 th\u1EE9 duy nh\u1EA5t ta c\xF3 th\u1EC3
+      tin!"
+  - speaker: Brother Tobias
+    text: "Ta c\u0169ng t\u1EEBng n\xF3i... y h\u1EC7t nh\u01B0 v\u1EADy... H\xE3y
+      nh\u1EDB l\u1EA5y: trong l\xE2u \u0111\xE0i n\xE0y, th\u1EE9 ph\xE1t s\xE1ng
+      ch\u01B0a ch\u1EAFc \u0111\xE3 l\xE0 thi\u1EC7n... v\xE0 th\u1EE9 \u1EA9n trong
+      b\xF3ng t\u1ED1i... ch\u01B0a ch\u1EAFc \u0111\xE3 l\xE0 \xE1c..."
   - speaker: Elara
-    text: "...Ta kh\u00F4ng hi\u1EC3u ng\u01B0\u01A1i n\u00F3i g\u00EC. Nh\u01B0ng ta s\u1EBD kh\u00F4ng d\u1EEBng l\u1EA1i. Y\u00EAn ngh\u1EC9 \u0111i, Brother Tobias."
+    text: "...Ta kh\xF4ng hi\u1EC3u ng\u01B0\u01A1i n\xF3i g\xEC. Nh\u01B0ng ta s\u1EBD
+      kh\xF4ng d\u1EEBng l\u1EA1i. Y\xEAn ngh\u1EC9 \u0111i, Brother Tobias."
   startDelay: 1.2
   typeSpeed: 0.04
   fadeOutDuration: 1.5
@@ -24084,16 +24172,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 79, y: 24, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 80, y: 24, z: 0}
     second:
       serializedVersion: 2
@@ -40127,7 +40205,7 @@ Tilemap:
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - serializedVersion: 2
-    m_RefCount: 3373
+    m_RefCount: 3372
     m_Data: {fileID: 11400000, guid: 68fec9737724f0c48822b096e13c8155, type: 2}
   - serializedVersion: 2
     m_RefCount: 1
@@ -40215,7 +40293,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 4033c604f55249847a621605658c4751, type: 2}
   m_TileSpriteArray:
   - serializedVersion: 2
-    m_RefCount: 3373
+    m_RefCount: 3372
     m_Data: {fileID: 6464996868133124990, guid: a419b29d7ee1f4b45acf54016a814fbb, type: 3}
   - serializedVersion: 2
     m_RefCount: 1
@@ -40303,7 +40381,7 @@ Tilemap:
     m_Data: {fileID: 7415905761785335156, guid: a419b29d7ee1f4b45acf54016a814fbb, type: 3}
   m_TileMatrixArray:
   - serializedVersion: 2
-    m_RefCount: 3728
+    m_RefCount: 3727
     m_Data:
       e00: 1
       e01: 0
@@ -40323,7 +40401,7 @@ Tilemap:
       e33: 1
   m_TileColorArray:
   - serializedVersion: 2
-    m_RefCount: 3728
+    m_RefCount: 3727
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -49396,6 +49474,7 @@ SceneRoots:
   - {fileID: 31932461}
   - {fileID: 19213463}
   - {fileID: 1777118672}
+  - {fileID: 69373282}
   - {fileID: 1465105425}
   - {fileID: 431173168}
   - {fileID: 336561607}
