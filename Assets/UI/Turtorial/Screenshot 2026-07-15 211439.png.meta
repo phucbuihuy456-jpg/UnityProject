@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: c657962b21db9214eaa06c8139f7cd46
+guid: 594a9ebaba5aa3c4999b8b54e23362f6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8706789272688090042
-    second: 20250425rightArrow-Sheet_0
-  - first:
-      213: 4094843474692853205
-    second: 20250425rightArrow-Sheet_1
-  - first:
-      213: 983211019189383070
-    second: 20250425rightArrow-Sheet_2
+      213: 4364238936236490727
+    second: Screenshot 2026-07-15 211439_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,89 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 20250425rightArrow-Sheet_0
+      name: Screenshot 2026-07-15 211439_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 21
-        height: 14
+        width: 1541
+        height: 1079
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: abb51c486bab4d870800000000000000
-      internalID: 8706789272688090042
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 20250425rightArrow-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 0
-        width: 21
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5ddc4efd17ec3d830800000000000000
-      internalID: 4094843474692853205
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 20250425rightArrow-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 42
-        y: 0
-        width: 21
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e9f6802763115ad00800000000000000
-      internalID: 983211019189383070
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 20250425rightArrow-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 63
-        y: 0
-        width: 21
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b6d529a1d73ae4943987b1ec5c9b810a
-      internalID: 261116128
+      spriteID: 7effd459034e09c30800000000000000
+      internalID: 4364238936236490727
       vertices: []
       indices: 
       edges: []
@@ -197,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 18e4d045101ca9e468247f28df1b9e88
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -205,14 +133,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":21.0,"y":14.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      20250425rightArrow-Sheet_0: 8706789272688090042
-      20250425rightArrow-Sheet_1: 4094843474692853205
-      20250425rightArrow-Sheet_2: 983211019189383070
-      20250425rightArrow-Sheet_3: 261116128
+      Screenshot 2026-07-15 211439_0: 4364238936236490727
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
