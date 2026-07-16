@@ -32,6 +32,9 @@ public class PlayerMovement : MonoBehaviour
     public FlameManager_1 flameManager;
     public AudioClip collectSound;
 
+    [Tooltip("Số giây hồi chiêu được cộng thêm/bỏ qua khi nhặt 1 ngọn lửa")]
+    public float flameCooldownReduction = 1.5f;
+
     [Header("Attack Detection")]
     public float attackRange = 1.0f;
     public float attackDamage = 1f;
@@ -528,6 +531,9 @@ public class PlayerMovement : MonoBehaviour
     //========================
     // Collect Flame
     //========================
+    //========================
+    // Collect Flame
+    //========================
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Flame"))
@@ -542,6 +548,20 @@ public class PlayerMovement : MonoBehaviour
             if (flameManager != null)
             {
                 flameManager.flameCount++;
+            }
+
+            // --- THÊM LOGIC GIẢM HỒI CHIÊU TẠI ĐÂY ---
+            // Nếu chiêu K đang trong thời gian chờ (chưa hồi xong)
+            if (!canSpecial)
+            {
+                // Ép tiến trình thời gian nhảy vọt về đích nhanh hơn
+                currentCooldownTimer += flameCooldownReduction;
+
+                // Khóa chặn: Đảm bảo tiến trình không bị lố quá mức tối đa
+                if (currentCooldownTimer > specialCooldown)
+                {
+                    currentCooldownTimer = specialCooldown;
+                }
             }
         }
     }
